@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ goal.name }} Roadmap</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: "Segoe UI", sans-serif;
+            background: linear-gradient(to right, #43cea2, #185a9d);
+            color: #fff;
+        }
+
+        .container {
+            max-width: 960px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.08);
+            border-radius: 12px;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .topic {
+            background-color: rgba(255, 255, 255, 0.12);
+            padding: 15px;
+            margin-bottom: 15px;
+            border-radius: 8px;
+        }
+
+        .topic h3 {
+            margin: 0;
+            font-size: 20px;
+        }
+
+        .topic a {
+            color: #00f7ff;
+            text-decoration: none;
+        }
+
+        .topic a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>{{ goal.name }} – Roadmap</h1>
+
+        {% for topic in topics %}
+            <div class="topic">
+                <h3>Week {{ topic.week }}: {{ topic.title }}</h3>
+                {% if topic.resource_link %}
+                    <p>📘 <a href="{{ topic.resource_link }}" target="_blank">Suggested Resource</a></p>
+                {% else %}
+                    <p>No resource added yet.</p>
+                {% endif %}
+            </div>
+        {% empty %}
+            <p>No topics added yet for this roadmap.</p>
+        {% endfor %}
+    </div>
+</body>
+</html>

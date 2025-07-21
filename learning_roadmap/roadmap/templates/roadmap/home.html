@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Learning Roadmaps</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: "Segoe UI", sans-serif;
+            background: linear-gradient(to right, #667eea, #764ba2);
+            background-attachment: fixed;
+            color: #fff;
+        }
+
+        .container {
+            max-width: 960px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.08);
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 40px;
+            font-size: 36px;
+            color: #ffffff;
+            text-shadow: 1px 1px 5px rgba(0,0,0,0.4);
+        }
+
+        .goal-card {
+            background-color: rgba(255, 255, 255, 0.15);
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 10px;
+            transition: transform 0.2s, box-shadow 0.3s;
+        }
+
+        .goal-card:hover {
+            transform: scale(1.02);
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.3);
+        }
+
+        .goal-title {
+            font-size: 24px;
+            margin-bottom: 10px;
+            color: #fff;
+        }
+
+        .goal-description {
+            font-size: 16px;
+            line-height: 1.5;
+            color: #ddd;
+        }
+
+        .view-button {
+            display: inline-block;
+            margin-top: 15px;
+            padding: 10px 20px;
+            background-color: #00c6ff;
+            color: #fff;
+            border: none;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+
+        .view-button:hover {
+            background-color: #007acc;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Available Learning Goals</h1>
+
+        {% for goal in goals %}
+            <div class="goal-card">
+                <div class="goal-title">{{ goal.name }}</div>
+                <div class="goal-description">{{ goal.description }}</div>
+                <a href="{% url 'roadmap_detail' goal.id %}" class="view-button">View Roadmap</a>
+            </div>
+        {% empty %}
+            <p>No learning goals added yet.</p>
+        {% endfor %}
+    </div>
+</body>
+</html>
